@@ -1,0 +1,15 @@
+/Users/natang/Desktop/BYU-Idaho/BYU-Idaho_class/CSE210-winter2024/cse210-student-template/prove/Develop02/obj/Debug/net8.0/Develop02.GeneratedMSBuildEditorConfig.editorconfig
+/Users/natang/Desktop/BYU-Idaho/BYU-Idaho_class/CSE210-winter2024/cse210-student-template/prove/Develop02/obj/Debug/net8.0/Develop02.AssemblyInfoInputs.cache
+/Users/natang/Desktop/BYU-Idaho/BYU-Idaho_class/CSE210-winter2024/cse210-student-template/prove/Develop02/obj/Debug/net8.0/Develop02.AssemblyInfo.cs
+/Users/natang/Desktop/BYU-Idaho/BYU-Idaho_class/CSE210-winter2024/cse210-student-template/prove/Develop02/obj/Debug/net8.0/Develop02.csproj.CoreCompileInputs.cache
+/Users/natang/Desktop/BYU-Idaho/BYU-Idaho_class/CSE210-winter2024/cse210-student-template/prove/Develop02/obj/Debug/net8.0/Develop02.sourcelink.json
+/Users/natang/Desktop/BYU-Idaho/BYU-Idaho_class/CSE210-winter2024/cse210-student-template/prove/Develop02/bin/Debug/net8.0/Develop02
+/Users/natang/Desktop/BYU-Idaho/BYU-Idaho_class/CSE210-winter2024/cse210-student-template/prove/Develop02/bin/Debug/net8.0/Develop02.deps.json
+/Users/natang/Desktop/BYU-Idaho/BYU-Idaho_class/CSE210-winter2024/cse210-student-template/prove/Develop02/bin/Debug/net8.0/Develop02.runtimeconfig.json
+/Users/natang/Desktop/BYU-Idaho/BYU-Idaho_class/CSE210-winter2024/cse210-student-template/prove/Develop02/bin/Debug/net8.0/Develop02.dll
+/Users/natang/Desktop/BYU-Idaho/BYU-Idaho_class/CSE210-winter2024/cse210-student-template/prove/Develop02/bin/Debug/net8.0/Develop02.pdb
+/Users/natang/Desktop/BYU-Idaho/BYU-Idaho_class/CSE210-winter2024/cse210-student-template/prove/Develop02/obj/Debug/net8.0/Develop02.dll
+/Users/natang/Desktop/BYU-Idaho/BYU-Idaho_class/CSE210-winter2024/cse210-student-template/prove/Develop02/obj/Debug/net8.0/refint/Develop02.dll
+/Users/natang/Desktop/BYU-Idaho/BYU-Idaho_class/CSE210-winter2024/cse210-student-template/prove/Develop02/obj/Debug/net8.0/Develop02.pdb
+/Users/natang/Desktop/BYU-Idaho/BYU-Idaho_class/CSE210-winter2024/cse210-student-template/prove/Develop02/obj/Debug/net8.0/Develop02.genruntimeconfig.cache
+/Users/natang/Desktop/BYU-Idaho/BYU-Idaho_class/CSE210-winter2024/cse210-student-template/prove/Develop02/obj/Debug/net8.0/ref/Develop02.dll

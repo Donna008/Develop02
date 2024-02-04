@@ -1,0 +1,31 @@
+# Question:
+1. Explain the meaning of Abstraction
+2. Highlight a benefit of Abstraction
+3. Provide an application of Abstraction
+4. Use a code example of Abstraction from the program you wrote
+5. Thoroughly explain these concepts (this likely cannot be done in less than 100 words)_
+
+_Abstraction in coding is like using a TV remote without knowing exactly how it works inside. It's about simplifying things, so we can focus on what we want to do without getting tangled up in all the technical details.
+Think of abstraction like organizing your messy room. It makes the code cleaner and easier to understand. When we want to add or change something, we can do it in one place without messing up the whole program.
+The GetPrompt class abstracts the process of obtaining a random prompt. Users simply call the GetRandomPrompt method without knowing the details of how prompts are managed. Here, the GetPrompt class abstracts the details of prompt generation. Users only need to know that they can get a random prompt by calling GetRandomPrompt._
+
+```{python}
+#| label: 1
+#| include: false
+
+public class GetPrompt{
+
+    public List<string> prompts = new List<string>
+        {
+            "Who was the most interesting person I interacted with today?",
+            "What was the best part of my day?",
+            "How did I see the hand of the Lord in my life today?",
+            "What was the strongest emotion I felt today?",
+            "If I had one thing I could do over today, what would it be?"
+        };
+    public string GetRandomPrompt(){
+        Random random = new Random();
+        int index = random.Next(prompts.Count);
+        return prompts[index];}
+    }
+```
