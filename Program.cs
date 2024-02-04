@@ -36,6 +36,13 @@ public class Program
                     case 5:
                         Environment.Exit(0);
                         break;
+                    // I provided you with a suggestion for exceeding the requirements by implementing the option to save and load journal entries in JSON format. 
+                    case 6:
+                        journal.SaveJournalToJson();
+                        break;
+                    case 7:
+                        journal.LoadJournalFromJson();
+                        break;
                     default:
                         Console.WriteLine("Invalid choice. Please enter a number between 1 and 5.");
                         break;

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using Newtonsoft.Json;
 
 public class Journal
 {
@@ -85,6 +86,26 @@ public class Journal
             }
 
             Console.WriteLine("Journal loaded from file successfully!");
+        }
+        else
+        {
+            Console.WriteLine("File not found. Please check the filename and try again.");
+        }
+    }
+    public void LoadJournalFromJson()
+    {
+        Console.Write("Enter a filename to load the journal from JSON: ");
+        string filename = Console.ReadLine();
+
+        if (File.Exists(filename))
+        {
+            _entries.Clear();
+
+            // Read the JSON content and deserialize it into a list of entries
+            string json = File.ReadAllText(filename);
+            _entries = JsonConvert.DeserializeObject<List<Entry>>(json);
+
+            Console.WriteLine("Journal loaded from JSON file successfully!");
         }
         else
         {
