@@ -5,111 +5,173 @@ using Newtonsoft.Json;
 
 public class Journal
 {
-    private List<Entry> _entries = new List<Entry>();
-    private GetPrompt _promptGenerator = new GetPrompt();
+    private List<Entry> _entries;
 
-    public void WriteNewEntry()
+    public Journal()
     {
-        string randomPrompt = _promptGenerator.GetRandomPrompt();
-        Console.WriteLine($"Prompt: {randomPrompt}");
-        Console.Write("Your response: ");
+        _entries = new List<Entry>();
+    }
+
+    public void WriteEntry()
+    {
+        string prompt = GetRandomPrompt();
+        Console.WriteLine($"Random Prompt: {prompt}");
+        Console.Write("Enter your response: ");
         string response = Console.ReadLine();
-
-        string currentDate = DateTime.Now.ToString("yyyy/MM/dd");
-        Entry newEntry = new Entry(randomPrompt, response, currentDate);
-        _entries.Add(newEntry);
-
+        DateTime date = DateTime.Now;
+        Entry entry = new Entry(date, prompt, response);
+        _entries.Add(entry);
         Console.WriteLine("Entry saved successfully!");
     }
 
     public void DisplayJournal()
     {
-        if (_entries.Count == 0)
-        {
-            Console.WriteLine("No entries to display.");
-            return;
-        }
-
         foreach (var entry in _entries)
         {
-            Console.WriteLine($"Date: {entry.Date}\nPrompt: {entry.Prompt}\nResponse: {entry.Response}\n");
+            Console.WriteLine($"\nDate: {entry.Date}");
+            Console.WriteLine($"Prompt: {entry.Prompt}");
+            Console.WriteLine($"Response: {entry.Response}");
         }
     }
 
-    public void SaveJournalToFile()
+    public void SaveToFile()
     {
-        if (_entries.Count == 0)
-        {
-            Console.WriteLine("No entries to save.");
-            return;
-        }
-
-        Console.Write("Enter a filename to save the journal: ");
+        Console.Write("Enter filename to save (JSON format): ");
         string filename = Console.ReadLine();
 
-        Console.WriteLine($"Entries to be saved to {filename}:");
-        foreach (var entry in _entries)
+        try
         {
-            Console.WriteLine($"{entry.Date} - {entry.Prompt}: {entry.Response}");
-        }
+            List<Entry> existingEntries;
 
-        string fullPath = Path.GetFullPath(filename);
-        Console.WriteLine($"Absolute Path: {fullPath}");
-
-        using (StreamWriter sw = new StreamWriter(filename))
-        {
-            foreach (var entry in _entries)
+            if (File.Exists(filename))
             {
-                sw.WriteLine($"{entry.Date},{entry.Prompt},{entry.Response}");
+                // If the file exists, load the existing entries
+                string existingJson = File.ReadAllText(filename);
+                existingEntries = JsonConvert.DeserializeObject<List<Entry>>(existingJson);
             }
-        }
+            else
+            {
+                // If the file doesn't exist, create an empty list
+                existingEntries = new List<Entry>();
+            }
 
-        Console.WriteLine("Journal saved to file successfully!");
+            // Add new entries to the existing list
+            existingEntries.AddRange(_entries);
+
+            // Save the combined list back to the file
+            string updatedJson = JsonConvert.SerializeObject(existingEntries, Formatting.Indented);
+            File.WriteAllText(filename, updatedJson);
+
+            Console.WriteLine($"Journal saved to {filename} (JSON format)");
+        }
+        catch (IOException)
+        {
+            Console.WriteLine("Error saving the journal to the file. Please check the filename and try again.");
+        }
     }
 
-    public void LoadJournalFromFile()
+public void SaveToTextFile()
     {
-        Console.Write("Enter a filename to load the journal: ");
+        Console.Write("Enter filename to save (Text format): ");
         string filename = Console.ReadLine();
 
-        if (File.Exists(filename))
+        try
         {
-            _entries.Clear();
-
-            using (StreamReader sr = new StreamReader(filename))
+            using (StreamWriter writer = new StreamWriter(filename, true))
             {
-                while (!sr.EndOfStream)
+                foreach (var entry in _entries)
                 {
-                    string[] entryData = sr.ReadLine().Split(',');
-                    _entries.Add(new Entry(entryData[1], entryData[2], entryData[0]));
+                    writer.WriteLine($"Date: {entry.Date}");
+                    writer.WriteLine($"Prompt: {entry.Prompt}");
+                    writer.WriteLine($"Response: {entry.Response}");
+                    writer.WriteLine(); // Add an empty line between entries
                 }
             }
 
-            Console.WriteLine("Journal loaded from file successfully!");
+            Console.WriteLine($"Journal saved to {filename} (Text format)");
         }
-        else
+        catch (IOException)
         {
-            Console.WriteLine("File not found. Please check the filename and try again.");
+            Console.WriteLine("Error saving the journal to the file. Please check the filename and try again.");
         }
     }
-    public void LoadJournalFromJson()
+
+    public void LoadFromFile()
     {
-        Console.Write("Enter a filename to load the journal from JSON: ");
+        Console.Write("Enter filename to load: ");
         string filename = Console.ReadLine();
 
-        if (File.Exists(filename))
+        try
         {
-            _entries.Clear();
-
-            // Read the JSON content and deserialize it into a list of entries
-            string json = File.ReadAllText(filename);
-            _entries = JsonConvert.DeserializeObject<List<Entry>>(json);
-
-            Console.WriteLine("Journal loaded from JSON file successfully!");
+            if (Path.GetExtension(filename).Equals(".json", StringComparison.OrdinalIgnoreCase))
+            {
+                string json = File.ReadAllText(filename);
+                _entries = JsonConvert.DeserializeObject<List<Entry>>(json);
+                Console.WriteLine($"Journal loaded from {filename} (JSON format)");
+            }
+            else
+            {
+                LoadFromTextFile(filename);
+            }
         }
-        else
+        catch (FileNotFoundException)
         {
-            Console.WriteLine("File not found. Please check the filename and try again.");
+            Console.WriteLine("File not found. Please check the filename.");
         }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading the journal: {ex.Message}");
+        }
+    }
+
+    private void LoadFromTextFile(string filename)
+    {
+        try
+        {
+            _entries.Clear(); // Clear existing entries before loading from text file
+
+            using (StreamReader reader = new StreamReader(filename))
+            {
+                while (!reader.EndOfStream)
+                {
+                    DateTime date;
+                    string prompt;
+                    string response;
+
+                    // Assuming the file format is consistent with Date, Prompt, Response
+                    // You may need to adjust this parsing logic based on your actual file format
+
+                    if (DateTime.TryParseExact(reader.ReadLine()?.Substring(6), "M/d/yyyy h:mm:ss tt", null, System.Globalization.DateTimeStyles.None, out date)
+                        && (prompt = reader.ReadLine()?.Substring(8)) != null
+                        && (response = reader.ReadLine()?.Substring(10)) != null)
+                    {
+                        _entries.Add(new Entry(date, prompt, response));
+                    }
+
+                    // Skip the empty line between entries
+                    reader.ReadLine();
+                }
+            }
+
+            Console.WriteLine($"Journal loaded from {filename} (Text format)");
+        }
+        catch (IOException)
+        {
+            Console.WriteLine("Error loading the journal from the file. Please check the filename and try again.");
+        }
+    }
+
+    private string GetRandomPrompt()
+    {
+        List<string> prompts = new List<string>
+        {
+            "Who was the most interesting person I interacted with today?",
+            "What was the best part of my day?",
+            "How did I see the hand of the Lord in my life today?",
+            "What was the strongest emotion I felt today?",
+            "If I had one thing I could do over today, what would it be?"
+        };
+        Random random = new Random();
+        return prompts[random.Next(prompts.Count)];
     }
 }

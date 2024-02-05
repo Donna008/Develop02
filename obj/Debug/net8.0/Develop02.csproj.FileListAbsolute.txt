@@ -13,3 +13,6 @@
 /Users/natang/Desktop/BYU-Idaho/BYU-Idaho_class/CSE210-winter2024/cse210-student-template/prove/Develop02/obj/Debug/net8.0/Develop02.pdb
 /Users/natang/Desktop/BYU-Idaho/BYU-Idaho_class/CSE210-winter2024/cse210-student-template/prove/Develop02/obj/Debug/net8.0/Develop02.genruntimeconfig.cache
 /Users/natang/Desktop/BYU-Idaho/BYU-Idaho_class/CSE210-winter2024/cse210-student-template/prove/Develop02/obj/Debug/net8.0/ref/Develop02.dll
+/Users/natang/Desktop/BYU-Idaho/BYU-Idaho_class/CSE210-winter2024/cse210-student-template/prove/Develop02/obj/Debug/net8.0/Develop02.csproj.AssemblyReference.cache
+/Users/natang/Desktop/BYU-Idaho/BYU-Idaho_class/CSE210-winter2024/cse210-student-template/prove/Develop02/bin/Debug/net8.0/Newtonsoft.Json.dll
+/Users/natang/Desktop/BYU-Idaho/BYU-Idaho_class/CSE210-winter2024/cse210-student-template/prove/Develop02/obj/Debug/net8.0/Develop02.csproj.CopyComplete

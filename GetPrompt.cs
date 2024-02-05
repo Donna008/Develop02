@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class GetPrompt
 {
-    public List<string> prompts = new List<string>
+    private List<string> prompts = new List<string>
     {
         "Who was the most interesting person I interacted with today?",
         "What was the best part of my day?",
@@ -19,3 +19,4 @@ public class GetPrompt
         return prompts[index];
     }
 }
+

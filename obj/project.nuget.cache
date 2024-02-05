@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "B1/HsGuOb/osuS5JciDijBwsnPGd/kN73YsiCDo+YyDG3glPaM8tBLyUWrboUzD5IG9nSC2pvjBssPtHm3KS9Q==",
+  "dgSpecHash": "ytsJOJhVmPtrRCLzQFvkUc998lUdYa/GTurPAOoblL2Ow0FkW5CL3Lt4khD+VNdQwiHaqUiNoTOg33nPp3F2oQ==",
   "success": true,
   "projectFilePath": "/Users/natang/Desktop/BYU-Idaho/BYU-Idaho_class/CSE210-winter2024/cse210-student-template/prove/Develop02/Develop02.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/Users/natang/.nuget/packages/newtonsoft.json/13.0.3/newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
   "logs": []
 }

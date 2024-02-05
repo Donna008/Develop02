@@ -10,7 +10,7 @@ Think of abstraction like organizing your messy room. It makes the code cleaner 
 The GetPrompt class abstracts the process of obtaining a random prompt. Users simply call the GetRandomPrompt method without knowing the details of how prompts are managed. Here, the GetPrompt class abstracts the details of prompt generation. Users only need to know that they can get a random prompt by calling GetRandomPrompt._
 
 ```{python}
-#| label: 1
+#| label: "1"
 #| include: false
 
 public class GetPrompt{
